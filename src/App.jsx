@@ -2,7 +2,7 @@ import React from "react";
 import { BrowserRouter, NavLink, Route, Routes, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
-import Veg from "./veg";
+import Veg from "./Veg";
 import Nonveg from "./Nonveg";
 import Drinks from "./Drinks";
 import Milkshakes from "./Milkshakes";
