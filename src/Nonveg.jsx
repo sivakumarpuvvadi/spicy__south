@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './Nonveg.css';   // ✅ Import Nonveg styles
 import { addToCart } from './store';
@@ -10,7 +11,9 @@ import 'react-toastify/dist/ReactToastify.css';
 
 function Nonveg() {
   const nonvegItems = useSelector(state => state.product.nonveg) || [];
+  const { isAuthenticated } = useSelector(state => state.auth || {});
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 8;
@@ -20,8 +23,23 @@ function Nonveg() {
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const currentItems = nonvegItems.slice(indexOfFirstItem, indexOfLastItem);
 
-  // ✅ Handle Add to Cart with toast
+  // ✅ Handle Add to Cart with toast and auth guard
   const handleAddToCart = (item) => {
+    if (!isAuthenticated) {
+      toast.warning("Please sign up to add items to your cart! 🔒", {
+        position: "top-right",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: false,
+        draggable: true,
+      });
+      setTimeout(() => {
+        navigate("/signup");
+      }, 1500);
+      return;
+    }
+
     dispatch(addToCart(item));
     toast.success(`${item.name} added to cart! 🛒`, {
       position: "top-right",
@@ -36,7 +54,14 @@ function Nonveg() {
 
   return (
     <div className="container mt-5 pt-2">
-      <h2 className="mb-4 text-center">NON-VEG</h2>
+      <div className="text-center mb-4">
+        <h2 className="category-heading nonveg-heading">
+          <span className="heading-icon me-2">🍗</span>
+          <span className="heading-text">NON-VEG SPECIALTIES</span>
+          <span className="heading-icon ms-2">🔥</span>
+        </h2>
+        <div className="heading-underline nonveg-underline"></div>
+      </div>
       <div className="row">
         {currentItems.map(item => (
           <div key={item.id} className="col-md-3 mb-4">

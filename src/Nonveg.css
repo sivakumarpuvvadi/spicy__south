@@ -140,4 +140,28 @@
   border: 2px solid goldenrod;
   transform: scale(1.05);
 }
-  
+
+/* Card Styles */
+.nonveg-card {
+  border-radius: 10px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  height: 350px;
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  border: none;
+}
+
+.nonveg-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* 📱 Mobile Responsiveness */
+@media (max-width: 768px) {
+  .nonveg-card {
+    height: auto;
+    min-height: 340px;
+  }
+}

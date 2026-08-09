@@ -4,13 +4,29 @@
   justify-content: space-between;
   align-items: center;
   background: darkslategray;
-  height: 70px;
+  min-height: 70px;
   padding: 0 40px;
   box-shadow: 0 3px 10px rgba(0,0,0,0.2);
   font-family: "Segoe UI", sans-serif;
   position: sticky;
   top: 0;
   z-index: 1000;
+}
+
+.navbar-collapse {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.navbar-toggle {
+  display: none;
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+  padding: 5px;
 }
 
 /* Logo */
@@ -67,6 +83,7 @@
 }
 
 .dropdown-content {
+  display: none;
   position: absolute;
   background: white;
   min-width: 160px;
@@ -75,6 +92,10 @@
   overflow: hidden;
   margin-top: 8px;
   z-index: 1000;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
 }
 
 .dropdown-content a {
@@ -90,10 +111,10 @@
   color: white;
 }
 
-
 /* Right buttons */
 .navbar-actions {
   display: flex;
+  align-items: center;
   gap: 12px;
 }
 
@@ -125,7 +146,7 @@
 
 /* Login Button */
 .login {
-  background: linear-gradient(45deg, yellow, goldenrod);
+  background: linear-gradient(45deg, #ffc107, goldenrod);
   color: darkslategray;
   border: 2px solid transparent;
 }
@@ -136,4 +157,187 @@
   transform: scale(1.05);
 }
 
+.welcome {
+  margin: 0;
+  font-weight: 600;
+}
 
+/* ==========================================
+   ✨ Styled Category Headings
+   ========================================== */
+.category-heading {
+  font-size: 2.2rem;
+  font-weight: 800;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 8px;
+  padding: 8px 24px;
+  border-radius: 50px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+}
+
+.heading-icon {
+  font-size: 2.4rem;
+}
+
+.heading-underline {
+  height: 4px;
+  width: 80px;
+  margin: 0 auto;
+  border-radius: 4px;
+}
+
+/* Veg Heading - Fresh Green Gradient */
+.veg-heading {
+  background: linear-gradient(135deg, #11998e, #38ef7d);
+  color: white;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+}
+.veg-underline {
+  background: linear-gradient(90deg, #11998e, #38ef7d);
+}
+
+/* NonVeg Heading - Spicy Flame Red/Orange Gradient */
+.nonveg-heading {
+  background: linear-gradient(135deg, #ff416c, #ff4b2b);
+  color: white;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+}
+.nonveg-underline {
+  background: linear-gradient(90deg, #ff416c, #ff4b2b);
+}
+
+/* Drinks Heading - Refreshing Cool Cyan/Blue Gradient */
+.drinks-heading {
+  background: linear-gradient(135deg, #00c6ff, #0072ff);
+  color: white;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+}
+.drinks-underline {
+  background: linear-gradient(90deg, #00c6ff, #0072ff);
+}
+
+/* Milkshakes Heading - Berry Purple/Pink Gradient */
+.milkshakes-heading {
+  background: linear-gradient(135deg, #8e2de2, #4a00e0);
+  color: white;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+}
+.milkshakes-underline {
+  background: linear-gradient(90deg, #8e2de2, #4a00e0);
+}
+
+/* ==========================================
+   📱 Media Queries for Mobile Responsiveness
+   ========================================== */
+
+@media (max-width: 992px) {
+  .category-heading {
+    font-size: 1.8rem;
+    padding: 6px 18px;
+  }
+  .heading-icon {
+    font-size: 1.8rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    padding: 12px 20px;
+    flex-wrap: wrap;
+  }
+
+  .navbar-toggle {
+    display: block;
+  }
+
+  .navbar-collapse {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    align-items: stretch;
+    background: darkslategray;
+    padding: 15px 0 10px 0;
+    gap: 15px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .navbar-collapse.open {
+    display: flex;
+  }
+
+  .navbar-menu {
+    flex-direction: column;
+    width: 100%;
+    gap: 10px;
+    align-items: stretch;
+  }
+
+  .navbar-menu a,
+  .dropbtn {
+    display: block;
+    width: 100%;
+    text-align: center;
+    padding: 10px;
+    font-size: 16px;
+  }
+
+  .dropdown-content {
+    position: static;
+    box-shadow: none;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+    margin-top: 4px;
+  }
+
+  .dropdown-content a {
+    color: white;
+    text-align: center;
+  }
+
+  .navbar-actions {
+    justify-content: center;
+    width: 100%;
+    margin-top: 5px;
+    flex-wrap: wrap;
+  }
+
+  .user-welcome-box {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .category-heading {
+    font-size: 1.5rem;
+    padding: 6px 14px;
+    letter-spacing: 0.5px;
+  }
+  .heading-icon {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar-logo a {
+    font-size: 20px;
+  }
+
+  .category-heading {
+    font-size: 1.25rem;
+    padding: 5px 12px;
+    border-radius: 30px;
+  }
+
+  .heading-icon {
+    font-size: 1.3rem;
+  }
+
+  .btn {
+    padding: 5px 14px;
+    font-size: 13px;
+  }
+}

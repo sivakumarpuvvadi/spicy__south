@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './Drinks.css';
 import { addToCart } from './store';
@@ -10,7 +11,9 @@ import 'react-toastify/dist/ReactToastify.css';
 
 function Drinks() {
   const drinksItems = useSelector(state => state.product.drinks) || [];
+  const { isAuthenticated } = useSelector(state => state.auth || {});
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 8;
@@ -20,8 +23,23 @@ function Drinks() {
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const currentItems = drinksItems.slice(indexOfFirstItem, indexOfLastItem);
 
-  // ✅ Handle Add to Cart with toast
+  // ✅ Handle Add to Cart with toast and auth guard
   const handleAddToCart = (item) => {
+    if (!isAuthenticated) {
+      toast.warning("Please sign up to add items to your cart! 🔒", {
+        position: "top-right",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: false,
+        draggable: true,
+      });
+      setTimeout(() => {
+        navigate("/signup");
+      }, 1500);
+      return;
+    }
+
     dispatch(addToCart(item));
     toast.success(`${item.name} added to cart! 🥤`, {
       position: "top-right",
@@ -36,7 +54,14 @@ function Drinks() {
 
   return (
     <div className="container pt-5 mt-2">
-      <h2 className="mb-4 text-center">DRINKS</h2>
+      <div className="text-center mb-4">
+        <h2 className="category-heading drinks-heading">
+          <span className="heading-icon me-2">🥤</span>
+          <span className="heading-text">REFRESHING DRINKS</span>
+          <span className="heading-icon ms-2">🧊</span>
+        </h2>
+        <div className="heading-underline drinks-underline"></div>
+      </div>
       <div className="row">
         {currentItems.map(item => (
           <div key={item.id} className="col-md-3 mb-4">

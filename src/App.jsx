@@ -18,6 +18,7 @@ import { logoutUser } from "./store";
 import "./App.css";
 
 function App() {
+  const [menuOpen, setMenuOpen] = React.useState(false);
   const cartItems = useSelector((state) => state.cart ?? []);
   const cartCount = cartItems.reduce((sum, item) => sum + (item.quantity || 1), 0);
 
@@ -29,7 +30,12 @@ function App() {
 
   const handleLogout = () => {
     dispatch(logoutUser());
+    setMenuOpen(false);
     navigate("/login");
+  };
+
+  const closeMenu = () => {
+    setMenuOpen(false);
   };
 
   return (
@@ -37,42 +43,52 @@ function App() {
       {/* ✅ Navbar */}
       <nav className="navbar">
         <div className="navbar-logo">
-          <NavLink to="/home">Spicy<span>South</span></NavLink>
+          <NavLink to="/" onClick={closeMenu}>Spicy<span>South</span></NavLink>
         </div>
 
-        <ul className="navbar-menu">
-          <li><NavLink to="/">🏠 Home</NavLink></li>
+        <button 
+          className="navbar-toggle" 
+          aria-label="Toggle navigation"
+          onClick={() => setMenuOpen(!menuOpen)}
+        >
+          {menuOpen ? "✕" : "☰"}
+        </button>
 
-          <li className="dropdown">
-            <span className="dropbtn">📖 Menu ▾</span>
-            <div className="dropdown-content">
-              <NavLink to="/veg">🥦 Veg</NavLink>
-              <NavLink to="/nonveg">🍗 Non-Veg</NavLink>
-              <NavLink to="/drinks">🥤 Drinks</NavLink>
-              <NavLink to="/milkshakes">🧋 Milkshakes</NavLink>
-            </div>
-          </li>
+        <div className={`navbar-collapse ${menuOpen ? "open" : ""}`}>
+          <ul className="navbar-menu">
+            <li><NavLink to="/" onClick={closeMenu}>🏠 Home</NavLink></li>
 
-          <li><NavLink to="/cart">🛒 Cart ({cartCount})</NavLink></li>
-          <li><NavLink to="/orders">🍽️ Orders</NavLink></li>
-          <li><NavLink to="/aboutus">ℹ️ About Us</NavLink></li>
-          <li><NavLink to="/contactus">📞 Contact Us</NavLink></li>
-        </ul>
+            <li className="dropdown">
+              <span className="dropbtn">📖 Menu ▾</span>
+              <div className="dropdown-content">
+                <NavLink to="/veg" onClick={closeMenu}>🥦 Veg</NavLink>
+                <NavLink to="/nonveg" onClick={closeMenu}>🍗 Non-Veg</NavLink>
+                <NavLink to="/drinks" onClick={closeMenu}>🥤 Drinks</NavLink>
+                <NavLink to="/milkshakes" onClick={closeMenu}>🧋 Milkshakes</NavLink>
+              </div>
+            </li>
 
-        <div className="navbar-actions">
-          {!isAuthenticated ? (
-            <>
-              <NavLink to="/signup"><button className="btn signup">Sign Up</button></NavLink>
-              <NavLink to="/login"><button className="btn login">🔑 Login</button></NavLink>
-            </>
-          ) : (
-            <>
-              <p className="welcome text-white">Welcome, {currentUser?.userName || "User"} 👋</p>
-              <button className="btn logout mt-2 mb-2 bg-warning" onClick={handleLogout}>
-                🚪 Logout
-              </button>
-            </>
-          )}
+            <li><NavLink to="/cart" onClick={closeMenu}>🛒 Cart ({cartCount})</NavLink></li>
+            <li><NavLink to="/orders" onClick={closeMenu}>🍽️ Orders</NavLink></li>
+            <li><NavLink to="/aboutus" onClick={closeMenu}>ℹ️ About Us</NavLink></li>
+            <li><NavLink to="/contactus" onClick={closeMenu}>📞 Contact Us</NavLink></li>
+          </ul>
+
+          <div className="navbar-actions">
+            {!isAuthenticated ? (
+              <>
+                <NavLink to="/signup" onClick={closeMenu}><button className="btn signup">Sign Up</button></NavLink>
+                <NavLink to="/login" onClick={closeMenu}><button className="btn login">🔑 Login</button></NavLink>
+              </>
+            ) : (
+              <div className="d-flex align-items-center gap-2 user-welcome-box">
+                <span className="welcome text-white">Welcome, {currentUser?.userName || "User"} 👋</span>
+                <button className="btn logout bg-warning" onClick={handleLogout}>
+                  🚪 Logout
+                </button>
+              </div>
+            )}
+          </div>
         </div>
       </nav>
 

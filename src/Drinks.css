@@ -85,3 +85,11 @@
 .pagination .btn-outline-success:hover {
   transform: scale(1.02);
 }
+
+/* 📱 Mobile Responsiveness */
+@media (max-width: 768px) {
+  .card {
+    height: auto;
+    min-height: 340px;
+  }
+}

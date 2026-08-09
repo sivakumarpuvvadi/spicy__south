@@ -75,3 +75,14 @@
 .pagination button {
   width: 50px !important;
 }
+
+/* 📱 Mobile Responsiveness */
+@media (max-width: 768px) {
+  .card {
+    height: auto;
+    min-height: 340px;
+  }
+  .card-img-top {
+    height: 180px !important;
+  }
+}
