@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import './Veg.css';   // ✅ Import Veg styles
+import './veg.css';   // ✅ Import Veg styles
 import { addToCart } from './store';
 
 // ✅ Import Toastify
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-function Veg() {
+function veg() {
   const vegItems = useSelector(state => state.product.veg) || [];
   const dispatch = useDispatch();
 
@@ -104,4 +104,4 @@ function Veg() {
   );
 }
 
-export default Veg;
+export default veg;
