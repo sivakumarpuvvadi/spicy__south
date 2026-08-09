@@ -1,0 +1,70 @@
+/* ===== Fullscreen Background ===== */
+.signup-container {
+  background: #ffffff;   /* White background */
+}
+
+/* ===== Card Styling ===== */
+.signup-card {
+  width: 550px;          /* Increased width */
+  min-height: 650px;     /* Increased height */
+  max-width: 95%;        /* Responsive for small screens */
+  background-color: #f9f9f9;
+  color: #333;
+  border: 1px solid #ddd;
+  border-radius: 20px;
+}
+
+/* ===== Form Labels ===== */
+.signup-card .form-label {
+  font-weight: bold;
+  color: #333;
+}
+
+/* ===== Input Fields ===== */
+.signup-card .form-control {
+  background-color: #fff;
+  color: #000;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 12px;
+  font-size: 1rem;
+}
+
+.signup-card .form-control:focus {
+  background-color: #fff;
+  color: #000;
+  border-color: #28a745;
+  box-shadow: 0 0 8px #28a745;
+}
+
+/* ===== Error Messages ===== */
+.invalid-feedback {
+  font-size: 0.9rem;
+  color: #dc3545 !important;
+}
+
+/* ===== Submit Button ===== */
+.signup-card .btn {
+  border-radius: 10px;
+  transition: all 0.3s ease;
+  font-size: 1.1rem;
+  padding: 12px;
+  background-color: #28a745;  /* Green button */
+  border: none;
+}
+
+.signup-card .btn:hover {
+  background-color: #218838;  /* Darker green on hover */
+  transform: scale(1.02);
+}
+
+/* ===== Login Link ===== */
+.signup-card a {
+  text-decoration: none;
+  color: #28a745;
+}
+
+.signup-card a:hover {
+  text-decoration: underline;
+  color: #218838;
+}

@@ -1,0 +1,139 @@
+/* Navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: darkslategray;
+  height: 70px;
+  padding: 0 40px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+  font-family: "Segoe UI", sans-serif;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+/* Logo */
+.navbar-logo a {
+  text-decoration: none;
+  font-size: 24px;
+  font-weight: bold;
+  color: white;
+}
+.navbar-logo span {
+  color: orange;
+}
+
+/* Menu */
+.navbar-menu {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar-menu a,
+.dropbtn {
+  text-decoration: none;
+  font-size: 15px;
+  color: whitesmoke;
+  font-weight: 500;
+  cursor: pointer;
+  transition: color 0.2s, background 0.2s;
+  padding: 6px 10px;
+  border-radius: 4px;
+}
+
+/* Hover effect */
+.navbar-menu a:hover,
+.dropbtn:hover {
+  background: orange;
+  color: white;
+}
+
+/* Active Tab */
+.navbar-menu a.active,
+.dropbtn.active {
+  background: orange;
+  color: white !important;
+  border-radius: 6px;
+}
+
+/* Dropdown */
+.dropdown {
+  position: relative;
+}
+
+.dropdown-content {
+  position: absolute;
+  background: white;
+  min-width: 160px;
+  box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+  border-radius: 6px;
+  overflow: hidden;
+  margin-top: 8px;
+  z-index: 1000;
+}
+
+.dropdown-content a {
+  display: block;
+  padding: 10px 14px;
+  color: darkslategray;
+  text-decoration: none;
+  transition: background 0.3s;
+}
+
+.dropdown-content a:hover {
+  background: orange;
+  color: white;
+}
+
+
+/* Right buttons */
+.navbar-actions {
+  display: flex;
+  gap: 12px;
+}
+
+/* Common Button Styles */
+.btn {
+  padding: 6px 18px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  transition: all 0.3s ease;
+  line-height: 1.4;
+  white-space: nowrap;
+}
+
+/* Sign Up Button */
+.signup {
+  background: linear-gradient(45deg, orange, darkorange);
+  color: white;
+  border: 2px solid transparent;
+}
+.signup:hover {
+  background: transparent;
+  color: orange;
+  border: 2px solid orange;
+  transform: scale(1.05);
+}
+
+/* Login Button */
+.login {
+  background: linear-gradient(45deg, yellow, goldenrod);
+  color: darkslategray;
+  border: 2px solid transparent;
+}
+.login:hover {
+  background: transparent;
+  color: goldenrod;
+  border: 2px solid goldenrod;
+  transform: scale(1.05);
+}
+
+

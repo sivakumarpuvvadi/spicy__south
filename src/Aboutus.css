@@ -1,0 +1,63 @@
+.about-video-section {
+  position: relative;
+  height: 40vh;
+  overflow: hidden;
+}
+
+.about-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.about-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+}
+
+.about-title {
+  font-size: 3rem;
+  font-weight: bold;
+}
+
+.about-subtitle {
+  font-size: 1.2rem;
+  opacity: 0.9;
+}
+
+.about-card {
+  transition: transform 0.3s ease;
+}
+
+.about-card:hover {
+  transform: translateY(-8px);
+}
+
+.stats-section {
+  background: linear-gradient(135deg, #111, #333);
+}
+
+.branch-card {
+  background: #fff;
+  transition: all 0.3s ease;
+}
+
+.branch-card:hover {
+  background: #ffc107;
+  color: #000;
+}
+
+.team-card {
+  background: #fff;
+  transition: transform 0.3s ease;
+}
+
+.team-card:hover {
+  transform: scale(1.05);
+}

@@ -1,0 +1,216 @@
+/* ===== Global Styles ===== */
+body {
+  background-color: whitesmoke;
+  margin: 0;
+  padding: 0;
+}
+
+/* ===== Background Video Section ===== */
+.back {
+  position: relative;
+  height: 600px;
+  overflow: hidden;
+}
+
+.video-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
+
+  /* Dark overlay for brightness control */
+  filter: brightness(70%);
+}
+
+.maintext {
+  position: relative;
+  padding: 200px 80px 0px 80px;
+  z-index: 1;
+  color: white;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+}
+
+.maintext h1 {
+  font-size: 60px;
+  font-weight: bold;
+}
+
+.maintext p {
+  font-size: 18px;
+  font-style: italic;
+}
+
+/* ===== Footer ===== */
+footer {
+  margin-top: 60px;
+}
+
+footer h4,
+footer h5 {
+  font-weight: bold;
+}
+
+footer a {
+  color: white;
+  text-decoration: none;
+}
+
+footer a:hover {
+  color: rgb(210, 170, 96) !important;
+}
+
+.bi:hover {
+  transform: scale(1.2);
+  transition: 0.3s;
+}
+
+
+/* new */
+
+/* -----------------------------------
+   🎥 Video Hero Section
+----------------------------------- */
+.video-section {
+  position: relative;
+  width: 100vw;                      /* Full viewport width */
+  height: 600px;                     /* Keep original height */
+  overflow: hidden;
+  margin-left: calc(-50vw + 50%);   /* Expand to left and right beyond container */
+  margin-bottom: 100px;             /* ✅ Add space below the video section */
+}
+
+.video-bg {
+  width: 100vw;                      /* Full viewport width */
+  height: 100%;
+  object-fit: cover;
+}
+
+.video-overlay {
+  position: absolute;
+  top: 60%;                          /* ✅ Move overlay text slightly lower */
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: black;
+  z-index: 2;
+}
+
+
+
+/* -----------------------------------
+   🌟 Hero Carousel
+----------------------------------- */
+.hero-img {
+  height: 800px;
+  object-fit: cover;
+  filter: brightness(85%);
+  border-radius: 10px;
+}
+
+.carousel-caption {
+  background: rgba(0, 0, 0, 0.45);
+  padding: 15px 25px;
+  border-radius: 12px;
+  backdrop-filter: blur(6px);
+}
+
+.home-heading {
+  color: #2c3e50;
+  font-size: 2rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+/* -----------------------------------
+   🍱 Category Cards
+----------------------------------- */
+.category-card {
+  border-radius: 16px;
+  background: #fff;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.category-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+.category-img {
+  height: 220px;
+  border-radius: 1rem;
+  object-fit: cover;
+  border-top-left-radius: 16px;
+  border-top-right-radius: 16px;
+}
+
+.category-title {
+  color: #34495e;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.category-btn {
+  border-radius: 25px;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.category-btn:hover {
+  background: #00c48c;
+  color: #fff;
+  border-color: #00c48c;
+}
+
+/* -----------------------------------
+   🚀 Premium Scrolling Marquee
+----------------------------------- */
+.premium-marquee {
+  background: linear-gradient(90deg, #2c3e50, #34495e);
+  padding: 20px 0;
+  border-top: 1px solid #444;
+  border-bottom: 1px solid #444;
+  margin-top: 50px;
+  overflow: hidden;
+  position: relative;
+}
+
+.scrolling-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  animation: scroll-marquee 30s linear infinite;
+}
+
+.marquee-img {
+  width: 150px;          /* 🔹 fixed width */
+  height: 100px;         /* 🔹 fixed height */
+  object-fit: cover;     /* 🔹 keeps aspect ratio, crops if needed */
+  border-radius: 12px;
+  box-shadow: 0 5px 20px rgba(255,255,255,0.2);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+
+.marquee-img:hover {
+  transform: scale(1.1);
+  box-shadow: 0 10px 30px rgba(255,255,255,0.4);
+}
+
+@keyframes scroll-marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* -----------------------------------
+   ⭐ Customer Reviews
+----------------------------------- */
+.reviewer-img {
+  width: 70px;
+  height: 70px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 2px solid #f1c40f;
+}

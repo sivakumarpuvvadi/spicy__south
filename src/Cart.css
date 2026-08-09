@@ -1,0 +1,91 @@
+/* ------------------------
+   Cart Page Styles
+------------------------- */
+
+/* Cart Title */
+.cart-title {
+  color: #0d6efd; /* Bootstrap primary blue */
+  font-size: 1.8rem;
+  letter-spacing: 1px;
+}
+
+/* Discount Title */
+.discount-title {
+  color: #198754; /* Bootstrap green */
+  font-size: 1.6rem;
+}
+
+/* Cart Item Image */
+.cart-item-img {
+  width: 70px;
+  height: 70px;
+  border-radius: 8px;
+  object-fit: cover;
+  border: 1px solid #ddd;
+}
+
+/* List group items */
+.list-group-item {
+  border: none;
+  border-bottom: 1px solid #eee;
+  padding: 12px 15px;
+}
+
+.list-group-item:last-child {
+  border-bottom: none;
+}
+
+/* Quick discount buttons */
+.discount10 {
+  background-color: #ff9800;
+  color: white;
+  font-weight: 600;
+}
+
+.discount20 {
+  background-color: #2196f3;
+  color: white;
+  font-weight: 600;
+}
+
+.discount30 {
+  background-color: #f44336;
+  color: white;
+  font-weight: 600;
+}
+
+/* Coupon Message */
+.coupon-message-box {
+  background: #e9f7ef;
+  border: 1px solid #28a745;
+  color: #155724;
+  font-size: 0.9rem;
+  font-weight: 500;
+  padding: 8px;
+  border-radius: 5px;
+}
+
+/* Payment Section */
+.payment-buttons .btn.active {
+  background-color: #0d6efd;
+  color: white;
+}
+
+.qr-section h6 {
+  font-weight: 600;
+  margin-top: 10px;
+}
+
+.card-payment input {
+  font-size: 0.9rem;
+}
+
+/* Buttons */
+.btn-dark,
+.btn-primary,
+.btn-success {
+  font-weight: 600;
+}
+.main{
+  padding-top: 300px
+}

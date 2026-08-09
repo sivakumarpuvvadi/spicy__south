@@ -1,0 +1,87 @@
+/* ✅ Card Styles */
+.card {
+  border-radius: 10px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  height: 350px;
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  border: none;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.card-img-top {
+  border: none !important;
+  box-shadow: none !important;
+  background: none !important;
+}
+
+.card img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  background-color: #f8f8f8;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.card-body {
+  padding: 15px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.card-title {
+  font-weight: bold;
+  font-size: 16px;
+  margin-bottom: 5px;
+}
+
+.card-text {
+  font-size: 14px;
+  flex: 1;
+  margin-bottom: 5px;
+  color: #555;
+}
+
+.card-price {
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: goldenrod;
+}
+
+/* ✅ Add to Cart Button */
+.btn-success {
+  width: 100%;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.btn-success:hover {
+  transform: scale(1.05);
+}
+
+/* ✅ Compact Pagination Buttons */
+.pagination button {
+  padding: 4px 10px;
+  font-size: 13px;
+  border-radius: 4px;
+  min-width: 32px;
+  margin: 0 3px;
+}
+
+.pagination .btn-success,
+.pagination .btn-outline-success {
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.pagination .btn-success:hover,
+.pagination .btn-outline-success:hover {
+  transform: scale(1.02);
+}
