@@ -9,6 +9,18 @@ function Orders() {
   const orders = useSelector((state) => state.orders) || [];
   const dispatch = useDispatch();
 
+  // ✅ Safely get order total
+  const getOrderTotal = (purchase) => {
+    const val = purchase.price ?? purchase.sumTotal ?? purchase.totalAmount;
+    if (val !== undefined && val !== null && !isNaN(val) && Number(val) > 0) {
+      return Number(val);
+    }
+    if (Array.isArray(purchase.items) && purchase.items.length > 0) {
+      return purchase.items.reduce((sum, item) => sum + ((item.price || 0) * (item.quantity || 1)), 0);
+    }
+    return 0;
+  };
+
   // ✅ Clear all orders with confirmation
   const handleClearOrders = () => {
     if (window.confirm("Are you sure you want to clear all orders?")) {
@@ -41,7 +53,7 @@ function Orders() {
 
                     {/* Total Paid */}
                     <p className="fw-bold text-danger fs-6 mb-2">
-                     Total Paid: ₹{Number(purchase.price)?.toFixed(2) || 0}
+                      Total Paid: ₹{getOrderTotal(purchase).toFixed(2)}
                     </p>
 
                     <hr />

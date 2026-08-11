@@ -137,10 +137,19 @@ function Cart() {
       cancelButtonText: "❌ Cancel",
     }).then((result) => {
       if (result.isConfirmed) {
+        const formattedTotal = netAmount.toFixed(2);
+        const formattedTax = taxAmount.toFixed(2);
+        const formattedSubtotal = totalAmount.toFixed(2);
+        const formattedDiscount = discountAmount.toFixed(2);
+
         const purchaseDetails = {
           date: new Date().toLocaleString(),
           items: [...cartItems],
           price: netAmount,
+          sumTotal: netAmount,
+          totalAmount: netAmount,
+          tax: taxAmount,
+          discount: discountAmount,
           email: email,
         };
 
@@ -148,19 +157,32 @@ function Cart() {
 
         const templateParams = {
           order_id: Date.now(),
-          orders: cartItems.map((item) =>({ 
+          orders: cartItems.map((item) => ({ 
                  name : item.name,
-                 price : item.price * item.quantity,
-                 units : item.quantity,
+                 price : (item.price * (item.quantity || 1)).toFixed(2),
+                 units : item.quantity || 1,
+                 quantity : item.quantity || 1,
           })),
-          cost:{
+          cost: {
             shipping : 50,
-            tax : taxAmount,
-            price : netAmount,
-            
+            tax : formattedTax,
+            price : formattedTotal,
           },
-          email : email,
-        }
+          sum_total: formattedTotal,
+          sumTotal: formattedTotal,
+          total_price: formattedTotal,
+          total_amount: formattedTotal,
+          grand_total: formattedTotal,
+          total: formattedTotal,
+          price: formattedTotal,
+          subtotal: formattedSubtotal,
+          tax: formattedTax,
+          discount: formattedDiscount,
+          shipping: 50,
+          email: email,
+          to_email: email,
+          user_email: email,
+        };
 
         emailjs
           .send(
