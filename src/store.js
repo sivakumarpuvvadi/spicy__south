@@ -231,12 +231,12 @@ const userAuthSlice = createSlice({
   initialState,
   reducers: {
     registerUser: (state, action) => {
-      const { userName, password } = action.payload;
+      const { userName, email, password } = action.payload;
       const existingUser = state.users.find(u => u.userName === userName);
       if (existingUser) {
         state.loginError = "Username already exists";
       } else {
-        state.users.push({ userName, password });
+        state.users.push({ userName, email, password });
         state.loginError = null;
         localStorage.setItem("auth", JSON.stringify(state));
       }
@@ -251,10 +251,12 @@ const userAuthSlice = createSlice({
         state.currentUser = user;
         state.isAuthenticated = true;
         state.loginError = null;
+        localStorage.setItem("user", JSON.stringify(user));
       } else {
         state.currentUser = null;
         state.isAuthenticated = false;
         state.loginError = "Invalid username or password";
+        localStorage.removeItem("user");
       }
       localStorage.setItem("auth", JSON.stringify(state));
     },
@@ -263,6 +265,7 @@ const userAuthSlice = createSlice({
       state.currentUser = null;
       state.isAuthenticated = false;
       state.loginError = null;
+      localStorage.removeItem("user");
       localStorage.setItem("auth", JSON.stringify(state));
     },
 

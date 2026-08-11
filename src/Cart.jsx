@@ -18,15 +18,21 @@ import { useNavigate } from "react-router-dom";
 
 function Cart() {
   const cartItems = useSelector((state) => state.cart) || [];
+  const { isAuthenticated, currentUser } = useSelector((state) => state.auth || {});
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const user = JSON.parse(localStorage.getItem("user"));
 
   const [couponCode, setCouponCode] = useState("");
   const [couponDiscount, setCouponDiscount] = useState(0);
   const [manualDiscount, setManualDiscount] = useState(0);
   const [paymentMethod, setPaymentMethod] = useState("");
-  const [email, setEmail] = useState("");
+  const [email, setEmail] = useState(currentUser?.email || "");
+
+  React.useEffect(() => {
+    if (currentUser?.email && !email) {
+      setEmail(currentUser.email);
+    }
+  }, [currentUser]);
 
   const totalAmount = cartItems.reduce(
     (sum, item) => sum + item.price * (item.quantity || 1),
@@ -395,19 +401,19 @@ function Cart() {
               )}
             </div>
 
-           {user ? (
+           {isAuthenticated ? (
                 <button
-                  className="btn bg-success mt-3 text-warning w-100"
+                  className="btn bg-success mt-3 text-white fw-bold w-100"
                   onClick={handlePurchase}
                 >
                   Complete Purchase
                 </button>
               ) : (
                 <button
-                  className="btn bg-warning mt-3 text-dark w-100"
-                  onClick={() => navigate("/signup")}
+                  className="btn bg-warning mt-3 text-dark fw-bold w-100"
+                  onClick={() => navigate("/login")}
                 >
-                  Login / Signup to Continue 🔐
+                  Login to Continue 🔐
                 </button>
               )}
           </div>
