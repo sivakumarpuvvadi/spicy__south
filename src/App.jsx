@@ -43,7 +43,9 @@ function App() {
       {/* ✅ Navbar */}
       <nav className="navbar">
         <div className="navbar-logo">
-          <NavLink to="/" onClick={closeMenu}>Spicy<span>South</span></NavLink>
+          <NavLink to="/" onClick={closeMenu}>
+            <span className="logo-icon">🌶️</span>Spicy<span>South</span>
+          </NavLink>
         </div>
 
         <button 
@@ -59,7 +61,7 @@ function App() {
             <li><NavLink to="/" onClick={closeMenu}>🏠 Home</NavLink></li>
 
             <li className="dropdown">
-              <span className="dropbtn">📖 Menu ▾</span>
+              <span className="dropbtn">📖 Menu <span className="arrow">▾</span></span>
               <div className="dropdown-content">
                 <NavLink to="/veg" onClick={closeMenu}>🥦 Veg</NavLink>
                 <NavLink to="/nonveg" onClick={closeMenu}>🍗 Non-Veg</NavLink>
@@ -68,7 +70,11 @@ function App() {
               </div>
             </li>
 
-            <li><NavLink to="/cart" onClick={closeMenu}>🛒 Cart ({cartCount})</NavLink></li>
+            <li>
+              <NavLink to="/cart" onClick={closeMenu}>
+                🛒 Cart {cartCount > 0 ? <span className="cart-badge">{cartCount}</span> : "(0)"}
+              </NavLink>
+            </li>
             <li><NavLink to="/orders" onClick={closeMenu}>🍽️ Orders</NavLink></li>
             <li><NavLink to="/aboutus" onClick={closeMenu}>ℹ️ About Us</NavLink></li>
             <li><NavLink to="/contactus" onClick={closeMenu}>📞 Contact Us</NavLink></li>
@@ -81,9 +87,11 @@ function App() {
                 <NavLink to="/login" onClick={closeMenu}><button className="btn login">🔑 Login</button></NavLink>
               </>
             ) : (
-              <div className="d-flex align-items-center gap-2 user-welcome-box">
-                <span className="welcome text-white">Welcome, {currentUser?.userName || "User"} 👋</span>
-                <button className="btn logout bg-warning" onClick={handleLogout}>
+              <div className="user-welcome-box">
+                <span className="welcome">
+                  Welcome, <strong className="username">{currentUser?.userName || "User"}</strong> 👋
+                </span>
+                <button className="btn logout" onClick={handleLogout}>
                   🚪 Logout
                 </button>
               </div>
